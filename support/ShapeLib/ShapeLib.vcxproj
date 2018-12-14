@@ -117,7 +117,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <MinimalRebuild>false</MinimalRebuild>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>

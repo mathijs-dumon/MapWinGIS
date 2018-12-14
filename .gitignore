@@ -3,6 +3,7 @@
 
 # skip them
 src/SupportingLibraries/*
+support/lib/v140/x64/*
 
 # User-specific files
 *.suo

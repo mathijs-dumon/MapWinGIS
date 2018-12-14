@@ -9,7 +9,6 @@
 #include "geo_normalize.h"
 #include "geovalues.h"
 #include "tiffio.h"
-#include "tiffiop.h"
 
 #pragma region Rotation
 // ****************************************************************

@@ -13,6 +13,9 @@ REM * Usage to test:                                            *
 REM * CopyTamasFiles.bat D:\dev\MapwinGIS\GitHub\support\GDAL_SDK\v140\bin\win32 D:\dev\MapwinGIS\GitHub\src\bin\Win32\
 REM *************************************************************
 
+ 
+GOTO EOF
+
 set _from_dir=%1
 set _to_dir=%2
 if '%_from_dir%'=='' if '%_to_dir%'=='' GOTO usage

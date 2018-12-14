@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spatialindex-mw", "spatialindex\spatialindex-vc\spatialindex.vcxproj", "{38FBBD59-8344-4D8E-B728-3D51763B6A70}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A0B00502-605B-4382-B313-5983F6BC8E71} = {A0B00502-605B-4382-B313-5983F6BC8E71}
+		{E81699D6-81BA-41BF-A3A9-DD4CEF0B4E95} = {E81699D6-81BA-41BF-A3A9-DD4CEF0B4E95}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cqlib", "cqlib\cqlib.vcxproj", "{E81699D6-81BA-41BF-A3A9-DD4CEF0B4E95}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ShapeLib", "ShapeLib\ShapeLib.vcxproj", "{A0B00502-605B-4382-B313-5983F6BC8E71}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E81699D6-81BA-41BF-A3A9-DD4CEF0B4E95} = {E81699D6-81BA-41BF-A3A9-DD4CEF0B4E95}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,5 +53,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2CDEA00-6858-44CC-91DB-004B9C6D4260}
 	EndGlobalSection
 EndGlobal

@@ -245,5 +245,5 @@ set(SIDX_DATA_DIR ${SIDX_DATA_SUBDIR})
 #------------------------------------------------------------------------------
 
 add_subdirectory(src)
-add_subdirectory(test)
+#add_subdirectory(test)
 

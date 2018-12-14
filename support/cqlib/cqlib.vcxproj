@@ -119,7 +119,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>.\Debug/cqlib.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>

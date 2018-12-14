@@ -59,6 +59,41 @@ namespace MWLite.GUI.Forms
 
             App.Project.ProjectChanged += (s, e) => RefreshUI();
 
+            /*var ext = new Extents();
+            ext.SetBounds(2.52, 50.64, 0, 5.94, 51.51, 10);
+
+            var wmslayer = new WmsLayer
+            {
+                BaseUrl = "http://geoservices.informatievlaanderen.be/raadpleegdiensten/GRB-basiskaart/wms",
+                Epsg = 4326,
+                Layers = "GRB_BSK",
+                Format = "image/png",
+                Name = "GRB BSK",
+                BoundingBox = ext
+            };
+            App.Map.Projection = tkMapProjection.PROJECTION_WGS84;
+            App.Legend.Layers.Add(wmslayer, true);*/
+            //?REQUEST = GetMap & HEIGHT = 256 & WIDTH = 256 & LAYERS = GRB_BSK & OUTPUT_FORMAT = image / png & bbox = 51.51,5.94,50.64,2.52
+
+
+
+            var ds = new OgrDatasource();
+            //ds.Open("MSSQL:server=192.168.1.204;database=COMMON;trusted_connection=no;UID=marlin;pwd=marlin007$");
+            //var sf = ds.GetLayerByName("ROUTE");
+
+            ds.Open("WFS:http://geoservices.informatievlaanderen.be/overdrachtdiensten/GRB/wfs");
+            var layers = new string[]
+            {
+                "GRB:ADP",
+                "GRB:GBA",
+                "GRB:GBG",
+            };
+            foreach (var nm in layers)
+            {
+                var sf = ds.GetLayerByName(nm);
+                App.Legend.Layers.Add(sf, true);
+            }
+
             App.Project.Load(AppSettings.Instance.LastProject);
         }
 
