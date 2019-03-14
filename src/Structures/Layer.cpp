@@ -409,7 +409,7 @@ UINT OgrAsyncLoadingThreadProc(LPVOID pParam)
 // ****************************************************
 //		LoadAsync()
 // ****************************************************
-void Layer::LoadAsync(IMapViewCallback* mapView, Extent extents, long layerHandle)
+void Layer::LoadAsync(IMapViewCallback* mapView, Extent extents, long layerHandle, bool bForce = false)
 {
 	if (!IsDynamicOgrLayer())
 		return;
@@ -417,11 +417,11 @@ void Layer::LoadAsync(IMapViewCallback* mapView, Extent extents, long layerHandl
 	OgrDynamicLoader* loader = GetOgrLoader();
 	if (!loader) return;
 
-	if (extents == loader->LastExtents) return;   // definitely no need to run it twice
+	if (!bForce && extents == loader->LastExtents) return;   // definitely no need to run it twice
 	loader->LastExtents = extents;
 
 	// if larger extents were requested previously and features were loaded, skip the new request
-	if (extents.Within(loader->LastSuccessExtents)) return;	   
+	if (!bForce && extents.Within(loader->LastSuccessExtents)) return;
 
 	// get a copy of categories to apply them in the background thread
 	vector<CategoriesData*>* data = new vector<CategoriesData*>();
@@ -519,13 +519,14 @@ void Layer::UpdateShapefile(long layerHandle)
 			ShapefileHelper::ClearShapefileModifiedFlag(sf);		// inserted shapes were marked as modified, correct this
 		}
 
+		// clean the data
+		for (size_t i = 0; i < data.size(); i++) {
+			delete data[i];
+		}
+
 		sfLock.Unlock();
 	}
 
-	// clean the data
-	for (size_t i = 0; i < data.size(); i++) {
-		delete data[i];
-	}
 }
 
 //****************************************************
