@@ -512,7 +512,9 @@ void CMapView::OnLButtonDown(UINT nFlags, CPoint point)
 	if (HandleOnZoombarMouseDown(point) || HandleOnCopyrighMouseDown(point))
 		return;
 
-	bool ctrl = nFlags & MK_CONTROL ? true: false;
+	bool ctrl = (nFlags & MK_CONTROL) != 0;
+	bool shift = (nFlags & MK_SHIFT) != 0;
+	bool alt = GetKeyState(VK_MENU) < 0 ? true : false;
 
 	long vbflags = ParseKeyboardEventFlags(nFlags);
 
@@ -524,7 +526,6 @@ void CMapView::OnLButtonDown(UINT nFlags, CPoint point)
 	// --------------------------------------------
 	double projX;
 	double projY;
-	bool shift = (nFlags & MK_SHIFT) != 0;
 
 	ClearHotTracking();
 
@@ -546,12 +547,19 @@ void CMapView::OnLButtonDown(UINT nFlags, CPoint point)
 	// digitizing
 	if (digitizingCursor)
 	{
+
 		if (m_cursorMode == cmAddShape) {
 			if (!StartNewBoundShape(x, y)) return;
 		}
 		
-		if (Digitizer::OnMouseDown(_shapeEditor, projX, projY, ctrl))
+		if (alt) { // user wants to intercept coordinates and possibly modify them
+			this->FireBeforeVertexDigitized(&projX, &projY);
+		}
+
+		if (Digitizer::OnMouseDown(_shapeEditor, projX, projY, ctrl)) {
 			UpdateShapeEditor();
+		}
+			
 		return;
 	}
 

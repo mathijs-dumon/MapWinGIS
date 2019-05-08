@@ -7177,6 +7177,8 @@ library MapWinGIS
 			[id(36)] void OnDrawBackBuffer2(LONG height, LONG Width, LONG Stride, LONG pixelFormat, LONG scan0);
 			[id(37)] void BeforeLayers(long hdc, long xMin, long xMax, long yMin, long yMax, tkMwBoolean* Handled);
 			[id(38)] void AfterLayers(long hdc, long xMin, long xMax, long yMin, long yMax, tkMwBoolean* Handled);
+            [id(39)] void LayerReprojectedIncomplete(LONG LayerHandle, Long NumReprojected, Long NumShapes);
+			[id(40)] void AfterVertexDigitized(DOUBLE* pointX, DOUBLE* pointY);
 			//}}AFX_ODL_EVENT
 			
 	};
